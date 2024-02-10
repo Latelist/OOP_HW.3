@@ -3,6 +3,7 @@ package model;
 import Logger.Logger;
 import model.generators.AlphabetGenerator;
 import model.generators.Alphabets;
+import model.generators.Answer;
 import model.generators.WordGenerator;
 import view.UserView;
 
@@ -10,25 +11,49 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Класс, представляющий игровой процесс.
+ */
 public class Game {
 
+    /** Текущее состояние игры. */
     public GameStatus gameStatus;
+    /** Тип алфавита для игры. */
     public Alphabets alphabets;
+    /** Количество попыток. */
     public int tryCount;
+    /** Длина загадываемого слова. */
     public int wordLength;
+    /** Загаданное компьютером слово. */
     public String computerWord;
+    /** Слово, введенное пользователем. */
     public String userValue;
+    /** Генератор алфавита. */
     public AlphabetGenerator alphabetGenerator;
+    /** Генератор слов. */
     public WordGenerator wordGenerator;
+    /** Список символов алфавита. */
     public ArrayList<String> alphabet;
+    /** Представление для пользователя. */
     public UserView userView;
+    /** Объект для чтения ввода пользователя. */
     public Scanner sc;
+    /** Количество быков в ответе компьютера. */
     public int bulls;
+    /** Количество коров в ответе компьютера. */
     public int cows;
+    /** Флаг перезапуска игры. */
     public boolean restart = true;
+    /** Логгер для записи событий игры. */
     public Logger logger;
+    /** Информация для записи в лог. */
     public String infoToLog;
 
+    /**
+     * Конструктор класса Game.
+     *
+     * @throws IOException если возникают проблемы с логгером
+     */
     public Game() throws IOException {
         gameStatus = GameStatus.INIT;
         alphabets = Alphabets.ENG;
@@ -37,6 +62,12 @@ public class Game {
         wordGenerator = new WordGenerator();
         logger = new Logger();
     }
+
+    /**
+     * Запустить игру.
+     *
+     * @throws IOException если возникают проблемы с логгером
+     */
     public void start() throws IOException {
         if (gameStatus == GameStatus.INIT) {
             gameStatus = GameStatus.START;
@@ -47,6 +78,11 @@ public class Game {
         }
     }
 
+    /**
+     * Настроить параметры игры.
+     *
+     * @throws IOException если возникают проблемы с логгером
+     */
     public void settings() throws IOException {
         userView.alphabetSettingText();
         String alphType = sc.nextLine();
@@ -70,6 +106,11 @@ public class Game {
         logger.newEntry(infoToLog);
     }
 
+    /**
+     * Цикл игры.
+     *
+     * @throws IOException если возникают проблемы с логгером
+     */
     public void cycle() throws IOException {
         while (tryCount > 0) {
             userView.inputValueText();
@@ -101,6 +142,11 @@ public class Game {
         }
     }
 
+    /**
+     * Завершить игру.
+     *
+     * @throws IOException если возникают проблемы с логгером
+     */
     public void end() throws IOException {
         userView.endText();
         int playAgain = sc.nextInt();
@@ -121,5 +167,4 @@ public class Game {
             }
         }
     }
-
 }

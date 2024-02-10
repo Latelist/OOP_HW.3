@@ -49,7 +49,6 @@ public class UserView {
                 "1 — да, \n" +
                 "2 — нет.\n");
     }
-
     public void goodByeText() {
         System.out.println("Спасибо за игру. Живите и процветайте. ");
     }

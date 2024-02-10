@@ -7,13 +7,29 @@ import java.util.Arrays;
  * Класс-генератор алфавита.
  */
 public class AlphabetGenerator {
+
+    /**
+     * Набор символов в олфавите
+     */
     public ArrayList<String> symbols;
+
+    /**
+     * Перечисляемый тип — возможные алфавиты
+     */
     public Alphabets alphabets;
 
+    /**
+     * Конструктор алфавитного генератора
+     * @param alphabets тип алфавита
+     */
     public AlphabetGenerator(Alphabets alphabets) {
         this.alphabets = alphabets;
     }
 
+    /**
+     * Сгенерировать алфавит
+     * @return набор символов
+     */
     public ArrayList<String> generateAlphabet() {
         switch (alphabets) {
             case NUM -> symbols = new ArrayList<>(Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "0"));

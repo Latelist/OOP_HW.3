@@ -5,7 +5,7 @@ start, inputValue,getGameStatus)
 b)	Абстрактный класс AbstractGame (который предзаполняет слово компьютера -
 generateWord(), на основе generateCharList() - который является абстрактным методом)
 c)	Статусная модель с помощью перечислений(model.GameStatus)
-d)	Класс ответа model.Answer
+d)	Класс ответа model.generators.Answer
 e)	Классы реализующие AbstractGame(предполагается игра на числах,англ буквах, русских буквах)
 f)	* реализовать restart().
 
@@ -27,8 +27,6 @@ f)	* реализовать restart().
 
 
 import Controller.Controller;
-import model.Answer;
-import model.GameStatus;
 
 import java.io.IOException;
 
